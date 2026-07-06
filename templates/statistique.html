@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+    {% for signalement in signalements %}
+        <div style="display: grid; grid-template-columns: 1fr 4fr;">
+            
+            <div style="background-color: lightgreen;">
+
+            </div>
+            <div style="display: flex; gap: 30px;">
+            <p> {{ signalement.type }} </p>
+            <p> {{ signalement.localisation }} </p>
+            <p> {{ signalement.jour }} </p>
+            <canvas id="mychart"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                const ctx =document.getElementById('myChart');
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data : {
+                        labels : []
+                    }
+                })
+
+            </script>
+
+
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

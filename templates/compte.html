@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1 style="text-align: center;">Creer un compte</h1>
+    <form action="{% url 'createcompte' %}" method="post" class="form">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="entrez votre nom">
+        <input type="tel" name="number" placeholder="entrez votre numero">
+        <input type="password" name="password" placeholder="entrez votre mot de passe">
+        <input type="submit">
+    </form>
+    <div style="justify-self: center;">
+    <a href="{% url 'connexion' %}" style="align-self: center; color: lightgreen;">Se connecter</a>
+    </div>
+{% endblock %}

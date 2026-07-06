@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <script src="{% static 'main.js' %}" defer>
+        </script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <img src="{% static 'photo/logo.png' %}" height="30">
+                <a href="{% url 'home' %}">Accueil</a>
+                <a href="">Prevention</a>
+                <a href="{% url 'connexion' %}">se connecter</a>
+                <a href="">Contacts</a>
+            </nav>
+        </header>
+        {% block content %}
+        {% endblock %}
+        <footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-section">
+            <h2>EcoVision</h2>
+            <p>
+                Ensemble, protégeons notre planète en sensibilisant aux enjeux
+                environnementaux tels que la pollution, les inondations,
+                l'érosion et le changement climatique.
+            </p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Liens rapides</h3>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">À propos</a></li>
+                <li><a href="#">Nos actions</a></li>
+                <li><a href="#">Actualités</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Nos services</h3>
+            <ul>
+                <li><a href="#">Sensibilisation</a></li>
+                <li><a href="#">Protection des forêts</a></li>
+                <li><a href="#">Recyclage</a></li>
+                <li><a href="#">Gestion des déchets</a></li>
+                <li><a href="#">Formation</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>📍 Kinshasa, RDC</p>
+            <p>📞 +243 000 000 000</p>
+            <p>✉ contact@ecovision.com</p>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="footer-bottom">
+        <p>© 2026 EcoVision. Tous droits réservés.</p>
+
+        <div class="socials">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">X</a>
+            <a href="#">LinkedIn</a>
+        </div>
+    </div>
+</footer>
+    </body>
+</html>

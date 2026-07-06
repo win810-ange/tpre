@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="page">
+        <div>
+        <form action="{% url 'creersujet' %}" method="post" class="form">
+            {% csrf_token %}
+            <input type="text" placeholder="creer un sujet" name="sujet">
+            <input type="submit" value="creer">
+        </form>
+    </div>
+    <div class="sujets">
+        <ol type="1">
+        {% for one in Discussion %}
+            <li><a href="{% url 'repondre' one.pk %}" class="sujet"> {{ one.sujet }} </a></li>
+        {% endfor %}
+        </ol>
+        
+    </div>
+    </div>
+{% endblock %}

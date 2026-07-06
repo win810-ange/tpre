@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load  static  %}
+
+
+{% block content %}
+    <div style="justify-self: center;">
+        <h1>Bienvenue {{ user.username }}</h1> 
+        <p> voulez vous participer au <a href="{% url 'creersujet' %}">forum</a><br>ou faire un signalement</p>
+        <p>voir  <a href="{% url 'afficherstat' %}">les statistique</a> </p> 
+    </div>
+    <form action="{% url 'creersignal' %}" method="post" class="form">
+        {% csrf_token %}
+        <input type="file" placeholder="entrez la photo à signaler" name="image" class="input">
+        <input type="text" list="signal" placeholder="type de dechets" name="signal">
+        <datalist id='signal' class="input">
+            <option vaalue="dechet">dechet</option>
+            <option value="inondation">inondation</option>
+            <option value="erosion">erosion</option>
+            <option value="autre">autre</option>
+        </datalist>
+        <input type="text" list="commune" name="lieu" placeholder="lieu du signalement">
+        <datalist id="commune">
+            <option value="lemba">lemba</option>
+            <option value="ngaba">ngaba</option>
+            <option value="matete">matete</option>
+            <option value="ndili">n'djili</option>
+            <option value="nsele">nsele</option>
+            <option value="maluku">maluku</option>
+            <option value="ngaliema">ngaliema</option>
+            <option value="gombe">gombe</option>
+            <option value="limete">limete</option>
+            <option value="barumbu">barumbu</option>
+
+        </datalist>
+        <input type="submit">
+    </form>
+{% endblock %}
