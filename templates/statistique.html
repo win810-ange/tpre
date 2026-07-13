@@ -3,16 +3,16 @@
 
 
 {% block content %}
-    {% for signalement in signalements %}
-        <div style="display: grid; grid-template-columns: 1fr 4fr;">
             
-            <div style="background-color: lightgreen;">
-
-            </div>
-            <div style="display: flex; gap: 30px;">
-            <p> {{ signalement.type }} </p>
-            <p> {{ signalement.localisation }} </p>
-            <p> {{ signalement.jour }} </p>
+            <a href="{% url 'creersignal' %}">retour au formulaire</a>
+            
+            <p> erosion : {{ erosion }} </p>
+            <p> dechet : {{ dechet }} </p>
+            <p> inondation : {{ inondation }} </p>
+            <p> total : {{ total }} </p>
+            {% for signal in signalement %}
+                <p> {{ signal.localisation }} | {{ signal.type }} </p>
+            {% endfor  %}
             <canvas id="mychart"></canvas>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script>
@@ -28,7 +28,5 @@
             </script>
 
 
-            </div>
-        </div>
-    {% endfor %}
+
 {% endblock %}

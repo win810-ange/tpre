@@ -20,15 +20,15 @@ def create(request):
         
     return render(request, 'dash.html')
 
-def LireSignal(reuqest):
+def countSignal_type(reuqest):
+    
     context = {
-        'signalements':Signalement.objects.all()
+        'erosion':Signalement.objects.filter(type="erosion").count(),
+        'dechet': Signalement.objects.filter(type="dechet").count(),
+        'inondation':Signalement.objects.filter(type="inondation").count(),
+        'signalement':Signalement.objects.all(),
+        'total':Signalement.objects.all().count()
     }
     return render(reuqest, 'statistique.html', context)
 
 
-def EnvoyerStatistique(request):
-    context = {
-        'total':Signalement.objects.count(),
-        
-    }
