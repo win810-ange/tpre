@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+    <a href="{% url 'creersujet' %}">retour</a>
     <div class="page">
         <div class="">
         <form action="{% url 'repondre' Discussion.pk %}" method="post" class="form">
@@ -18,8 +19,6 @@
         {% for rep in reponse %}
             <div class="reponse">
                 <p>{{ rep.commentaire }}</p>
-                <a href="{% url 'delete' rep.pk %}">Supprimer</a>
-                <a href="">modifier</a>
             </div>
         {% endfor %}
     </div>

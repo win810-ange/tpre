@@ -3,29 +3,94 @@
 
 
 {% block content %}
-            
-            <a href="{% url 'creersignal' %}">retour au formulaire</a>
-            
-            <p> erosion : {{ erosion }} </p>
-            <p> dechet : {{ dechet }} </p>
-            <p> inondation : {{ inondation }} </p>
-            <p> total : {{ total }} </p>
-            {% for signal in signalement %}
-                <p> {{ signal.localisation }} | {{ signal.type }} </p>
-            {% endfor  %}
-            <canvas id="mychart"></canvas>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <script>
-                const ctx =document.getElementById('myChart');
+            <a href="{% url 'creersignal' %}">retour au formulaire</a>
+            <a href="{% url 'detailsignal' %}">voir les signalement</a>
 
-                new Chart(ctx, {
-                    type: 'bar',
-                    data : {
-                        labels : []
-                    }
-                })
 
-            </script>
+            {% for cle, valeur in types.items %}
+                <ul>
+                    <li class="type">{{ cle }}</li><p class="typevaleur">{{ valeur }} </p>
+                </ul>
+            {% endfor %}        
+
+            <div style="border: 1px solid #000;"></div>
+            <canvas id="mychart" style="width: 80%; height: 600px;"></canvas>
+            
+            {% for cle, valeur in communes.items %}
+                <ul>
+                    <li class="commune"> {{ cle }}</li><p class="communenombre">{{ valeur }}</p>
+                </ul>
+            {% endfor  %}
+            <canvas id="chart" style="width: 80%; height: 600px;"></canvas>
+
+
+        <script>
+            //on travail pour le graphique lié au nombre par type
+            //recupere les elements de la list type : nombre de signalement
+
+            //variable qui recupere les types des defis
+            let listtype = []
+            
+            let elements = document.querySelectorAll(".type")
+            elements.forEach(element =>{
+                listtype.push(element.textContent)
+            })
+
+
+            //variable qui ensemeble le nombre de signalement par types
+            let listtypevaleur = []
+            let typevaleurs = document.querySelectorAll(".typevaleur")
+            typevaleurs.forEach(valeur =>{
+                listtypevaleur.push(parseInt(valeur.textContent))
+            })
+
+            
+            const ctx = document.getElementById("mychart");
+            new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: listtype,
+                datasets: [{
+                    label: "types",
+                    data: listtypevaleur,
+                    backgroundColor: [
+                        "red"
+                    ]
+                }]
+            }
+        });
+        //fini de travailler pour les graphiques des type 
+        //on travail pour les grphiques liées au nombre de signalement par commune 
+        let communes = []
+
+        let ele_com = document.querySelectorAll(".commune")
+        ele_com.forEach(ele => {
+            communes.push(ele.textContent)
+        })
+
+
+        let list_comm_nbr = []
+        let commune_nbr = document.querySelectorAll('.communenombre')
+        commune_nbr.forEach(nbr => {
+            list_comm_nbr.push(parseInt(nbr.textContent))
+        })
+
+        const can = document.getElementById('chart')
+        new Chart(can, {
+            type: "bar",
+            data : {
+                labels: communes,
+                datasets: [{
+                    label:"communes",
+                    data:list_comm_nbr,
+                    backgroundColor : ["blue"]
+                }]
+            }
+        })
+        
+        </script>
+
 
 
 

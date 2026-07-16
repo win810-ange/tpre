@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for signalement in signalements %}
+        <div>
+            <img src="{{ signalement.image.url }}">
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -3,6 +3,7 @@ from .models import Discussion, Reponse
 
 # Create your views here.
 def create(request):
+    #on cree les sujets ici
     if request.method == "POST":
        sujet = request.POST.get('sujet')
        Discussion.objects.create(sujet=sujet).save()
@@ -17,6 +18,7 @@ def create(request):
 
 
 def Lirecommentaire(request, pk):
+    #on cree et on renvoie les commentaire ici
     discu1 = Discussion.objects.get(id=pk)
     context = {
         'reponse':Reponse.objects.filter(Sujet=discu1).all(),
