@@ -125,7 +125,6 @@ header{
 
 .page{
     display: flex;
-
 }
 
 .sujets{
@@ -143,6 +142,8 @@ header{
     margin-top: 20px;
     max-width: auto;
 }
+
+
 
 
 /* modification css de 'interface administrateur*/

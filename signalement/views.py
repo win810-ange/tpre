@@ -8,7 +8,7 @@ from .models import Signalement
 def create(request):
     if request.method == 'POST':
         type = request.POST.get('signal')
-        image = request.POST.get('image')
+        image = request.FILES.get('image')
         localisation = request.POST.get('lieu')
         
         signa= Signalement.objects.create(

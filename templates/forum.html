@@ -3,6 +3,7 @@
 
 {% block content %}
     <div class="page">
+        {{ user.username }}
         <div>
         <form action="{% url 'creersujet' %}" method="post" class="form">
             {% csrf_token %}

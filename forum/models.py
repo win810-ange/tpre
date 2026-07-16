@@ -12,8 +12,8 @@ class Discussion(models.Model):
 class Reponse(models.Model):
     Sujet = models.ForeignKey(Discussion, on_delete=models.CASCADE)
     commentaire = models.TextField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default="anonyme")
-    date_published = models.DateField(auto_now=True, default="sometimes")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    date_published = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return f'{self.Sujet}'

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Discussion, Reponse
+from user.models import User
 
 # Create your views here.
 def create(request):
@@ -18,15 +19,18 @@ def create(request):
 
 
 def Lirecommentaire(request, pk):
-    #on cree et on renvoie les commentaire ici
+    #on cree un commentaire avec son auteur et on le publie ici
     discu1 = Discussion.objects.get(id=pk)
     context = {
         'reponse':Reponse.objects.filter(Sujet=discu1).all(),
         'Discussion':Discussion.objects.get(id=pk)
     }
+    user1 = User.objects.filter(username=request.user).get()
+    
+
     if request.method == 'POST':
         commentaire = request.POST.get('commentaire')
-        Reponse.objects.create(Sujet=discu1, commentaire=commentaire).save()
+        Reponse.objects.create(Sujet=discu1, commentaire=commentaire, author=user1).save()
 
     return render(request, 'reponse.html', context)
 

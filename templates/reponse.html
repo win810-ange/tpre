@@ -3,24 +3,33 @@
 
 {% block content %}
     <a href="{% url 'creersujet' %}">retour</a>
+    {{ user.username }}
     <div class="page">
-        <div class="">
-        <form action="{% url 'repondre' Discussion.pk %}" method="post" class="form">
-            {% csrf_token %}
-            <textarea name="commentaire" class="input">
 
-            </textarea>
-            <input type="hidden" value="{{Discussion}}" name="id">
-            <input type="submit" value="publier">
-        </form>
-    </div>
-    <div>
-        <h1> {{ Discussion.sujet }} </h1>
-        {% for rep in reponse %}
-            <div class="reponse">
-                <p>{{ rep.commentaire }}</p>
+            <div class="aside">
+                <form action="{% url 'repondre' Discussion.pk %}" method="post" class="form">
+                    {% csrf_token %}
+                    <textarea name="commentaire" class="input">
+
+                    </textarea>
+                    <input type="hidden" value="{{Discussion}}" name="id">
+                    <input type="submit" value="publier">
+                </form>
             </div>
-        {% endfor %}
-    </div>
+
+
+            <div class="fil">
+                <h1> {{ Discussion.sujet }} </h1>
+                {% for rep in reponse %}
+                    <div class="reponse">
+                        <p>{{ rep.commentaire }}</p>
+                        <div>
+                        <p>{{ rep.author }}</p>
+                        <p> {{ rep.date_published }} </p>
+                    </div>
+                    </div>     
+                {% endfor %}
+            </div>  
+
     </div>
 {% endblock %}

@@ -8,7 +8,7 @@
         <p> voulez vous participer au <a href="{% url 'creersujet' %}">forum</a><br>ou faire un signalement</p>
         <p>voir  <a href="{% url 'afficherstat' %}">les statistique</a> </p> 
     </div>
-    <form action="{% url 'creersignal' %}" method="post" class="form">
+    <form action="{% url 'creersignal' %}" method="post" class="form" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="file" placeholder="entrez la photo à signaler" name="image" class="input">
         <input type="text" list="signal" placeholder="type de dechets" name="signal">
@@ -23,7 +23,7 @@
             <option value="lemba">lemba</option>
             <option value="ngaba">ngaba</option>
             <option value="matete">matete</option>
-            <option value="ndili">n'djili</option>
+            <option value="ndili">ndjili</option>
             <option value="nsele">nsele</option>
             <option value="maluku">maluku</option>
             <option value="ngaliema">ngaliema</option>
