@@ -143,7 +143,14 @@ header{
     max-width: auto;
 }
 
+.contacts{
+    margin-left: 10%;
+}
 
+.contact{
+    height: 40px;
+    background-color: lightblue;
+}
 
 
 /* modification css de 'interface administrateur*/
