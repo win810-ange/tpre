@@ -20,6 +20,8 @@ def create(request):
         
     return render(request, 'dash.html')
 
+
+
 def countSignal_type(reuqest):
     signals = Signalement.objects.all()
     #un petit programme pour les types de signale

@@ -1,27 +1,44 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 
 {% block content %}
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <a href="{% url 'creersignal' %}">retour au formulaire</a>
-            <a href="{% url 'detailsignal' %}">voir les signalement</a>
+            <a href="{% url 'creersignal' %}">
+                <img src="{% static 'photo/fleche.png' %}" alt="" width="30">
+            </a>
 
+            <div style="width: 400px; justify-self: center; text-align: center;">
+                <img src="{% static 'photo/dev.jpg' %}" alt="" height="200" style="border-radius: 50%;">
+                <p>grace aux informations relayé nous avons contituons une statique que nous ameliorons au fur et à mesure</p>
+            </div>
+            
 
-            {% for cle, valeur in types.items %}
+            <div style="display: none;">
+                {% for cle, valeur in types.items %}
                 <ul>
                     <li class="type">{{ cle }}</li><p class="typevaleur">{{ valeur }} </p>
                 </ul>
-            {% endfor %}        
+            {% endfor %} 
+            </div>       
 
-            <div style="border: 1px solid #000;"></div>
-            <canvas id="mychart" style="width: 80%; height: 600px;"></canvas>
-            
-            {% for cle, valeur in communes.items %}
+            <div style="border: 1px dashed #000; margin: 20px;"></div>
+            <section style="display: flex;">
+                <div>
+                    <canvas id="mychart" style="width: 400px; height: 600px;"></canvas>
+                </div>
+                <div style="text-align: center; border: #000 1px solid; border-radius: 20px; width: 400px; margin-left: 200px; align-content: center;">
+                    Des parts et d'autres de la ville de kinshasa nous avons reçu des signalement. voici un diagramme circulaire qui represente la quantité de signalement dans chacune des catégories 
+                </div>
+            </section>
+            <div style="border: 1px dashed #000; margin: 20px;"></div>
+            <div style="display: none;">
+                {% for cle, valeur in communes.items %}
                 <ul>
                     <li class="commune"> {{ cle }}</li><p class="communenombre">{{ valeur }}</p>
                 </ul>
             {% endfor  %}
+            </div>
             <canvas id="chart" style="width: 80%; height: 600px;"></canvas>
 
 
@@ -48,14 +65,14 @@
             
             const ctx = document.getElementById("mychart");
             new Chart(ctx, {
-            type: "bar",
+            type: "pie",
             data: {
                 labels: listtype,
                 datasets: [{
                     label: "types",
                     data: listtypevaleur,
                     backgroundColor: [
-                        "red"
+                        "red", "blue", "green"
                     ]
                 }]
             }
@@ -84,7 +101,7 @@
                 datasets: [{
                     label:"communes",
                     data:list_comm_nbr,
-                    backgroundColor : ["blue"]
+                    backgroundColor : ["blue", "red", "green", "yellow"]
                 }]
             }
         })

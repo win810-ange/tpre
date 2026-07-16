@@ -2,8 +2,10 @@
 {% load static %}
 
 {% block content %}
-    <a href="{% url 'creersujet' %}">retour</a>
-    {{ user.username }}
+    <a href="{% url 'creersujet' %}">
+        <img src="{% static 'photo/fleche.png' %}" alt="" width="30">
+    </a>
+
     <div class="page">
 
             <div class="aside">
@@ -24,8 +26,8 @@
                     <div class="reponse">
                         <p>{{ rep.commentaire }}</p>
                         <div>
-                        <p>{{ rep.author }}</p>
-                        <p> {{ rep.date_published }} </p>
+                        <p style="font-size: 12px;">{{ rep.author }}</p>
+                        <p style="font-size: 12px;"> {{ rep.date_published }} </p>
                     </div>
                     </div>     
                 {% endfor %}
