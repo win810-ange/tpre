@@ -33,12 +33,15 @@ def create(request):
         number = request.POST.get('number')
         password = request.POST.get('password')
         
-        user1 = User.objects.create_user(
+        if User.objects.filter(username=nom).exists():
+            user1 = User.objects.create_user(
             username = nom,
             numero = number,
             password = password
-        )
-        user1.save()
+            )
+            user1.save()
+        else :
+            return HttpResponse("<h1>l utilisateur exist déjà</h1>")
     
     return render(request, 'compte.html')
     
