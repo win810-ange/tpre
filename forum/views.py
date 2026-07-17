@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from .models import Discussion, Reponse
 from user.models import User
 
@@ -27,10 +28,13 @@ def Lirecommentaire(request, pk):
     }
     user1 = User.objects.filter(username=request.user).get()
     
-
-    if request.method == 'POST':
-        commentaire = request.POST.get('commentaire')
-        Reponse.objects.create(Sujet=discu1, commentaire=commentaire, author=user1).save()
+    if user1 is not None:
+        if request.method == 'POST':
+            commentaire = request.POST.get('commentaire')
+            Reponse.objects.create(Sujet=discu1, commentaire=commentaire, author=user1).save()
+            
+    else :
+        return HttpResponse("<h1>connectez vous pour tous voir</h1>")
 
     return render(request, 'reponse.html', context)
 
