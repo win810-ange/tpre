@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-_eh3-h(=zm%j_w+8r^5@)@&dt&(&-he-&mww3swg0s!n3d7(n7
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'tpre.onrender.com'
+    'ecolomboka.onrender.com',
     '.onrender.com',
     'localhost',
     '127.0.0.1'
@@ -49,9 +49,7 @@ INSTALLED_APPS = [
 ]
 
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://tpre.onrender.com",
-]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
