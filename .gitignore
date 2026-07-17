@@ -1,0 +1,16 @@
+# Environnement virtuel
+.venv/
+venv/
+
+# Fichiers Python temporaires
+__pycache__/
+*.pyc
+
+# Variables secrètes
+.env
+
+# Base locale SQLite
+db.sqlite3
+
+# Fichiers système
+.DS_Store
